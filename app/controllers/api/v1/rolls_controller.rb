@@ -1,4 +1,4 @@
-class RollsController < ApplicationController
+class Api::V1::RollsController < ApplicationController
 before_action :set_roll, only: [:show, :edit, :update, :destroy]
 def index
   @rolls = Roll.all
