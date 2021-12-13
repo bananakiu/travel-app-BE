@@ -7,8 +7,8 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins '*'
-
+    origins '*' # When deploying to production, set origins to the URL of your frontend app. Otherwise the whole internet will be able to hit your API. Though in some cases that’s desirable.
+    
     resource '*',
       headers: :any,
       methods: [:get, :post, :put, :patch, :delete, :options, :head]
