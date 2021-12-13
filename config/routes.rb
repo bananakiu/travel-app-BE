@@ -5,4 +5,11 @@ Rails.application.routes.draw do
                registrations: 'users/registrations'
              }
   get '/member-data', to: 'members#show'
+  namespace :api do
+    namespace :v1 do
+      resources :rolls
+      resources :entries
+      resources :ratings
+    end
+  end
 end
