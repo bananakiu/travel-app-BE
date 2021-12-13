@@ -1,5 +1,5 @@
 class EntriesController < ApplicationController
-      # GET /entries
+  before_action :set_entry, only: [:show, :edit, :update, :destroy]
   def index
     @entries = Entry.all
     render json: @entries

@@ -1,5 +1,5 @@
 class RollsController < ApplicationController
-    # GET /rolls
+before_action :set_roll, only: [:show, :edit, :update, :destroy]
 def index
   @rolls = Roll.all
   render json: @rolls
@@ -43,7 +43,7 @@ private
 
   # Only allow a trusted parameter "white list" through.
   def roll_params
-    params.require(:roll).permit(:title :start_date :end_date :user_id)
+    params.require(:roll).permit(:title, :start_date, :end_date, :user_id)
   end
 
 end
