@@ -40,9 +40,9 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# # devise
-# gem 'devise'
-# gem 'devise-jwt'
+# devise
+gem 'devise'
+gem 'devise-jwt'
 
 # jwt
 gem 'jwt'
