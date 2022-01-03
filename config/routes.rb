@@ -10,6 +10,8 @@ Rails.application.routes.draw do
       resources :rolls
       resources :entries
       resources :ratings
+
+      post 'authenticate', to: 'authentication#create'
     end
   end
 end
