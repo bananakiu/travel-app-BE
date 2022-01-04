@@ -14,15 +14,13 @@ describe 'Authentication', type: :request do
         it 'returns error when email is missing' do
             post '/api/v1/authenticate', params: { email: '', password: "password"}
             expect(response).to have_http_status(:unprocessable_entity)
-            expect(response.body).to eq({
-                'error' => 'param is missing or the value is empty: username'
-            })
+            expect(JSON.parse(response.body)["error"]).to include('param is missing or the value is empty: email')
         end
 
         it 'returns error when password is missing' do
             post '/api/v1/authenticate', params: { email: 'akosipc@gmail.com', password: ""}
             expect(response).to have_http_status(:unprocessable_entity)
-            expect(response.body).to eq({
+            expect(JSON.parse(response.body)).to include({
                 'error' => 'param is missing or the value is empty: password'
             })
         end
