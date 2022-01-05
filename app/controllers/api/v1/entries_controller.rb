@@ -1,5 +1,7 @@
 class Api::V1::EntriesController < ApplicationController
   before_action :set_entry, only: [:show, :edit, :update, :destroy]
+  # before_filter :authorize, only: [:edit, :update]
+  
   def index
     @entries = Entry.all
     render json: @entries
