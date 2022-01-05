@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
+  get 'signup', to: 'users#new', as: 'signup'
+  get 'login', to: 'sessions#new', as: 'login'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
   resources :users
-  # devise_for :users,
-  #            controllers: {
-  #              sessions: 'users/sessions',
-  #              registrations: 'users/registrations'
-  #            }
+  resources :sessions
+
   get '/member-data', to: 'members#show'
   namespace :api do
     namespace :v1 do
