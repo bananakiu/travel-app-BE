@@ -3,16 +3,25 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_email(params[:email])
-    if user.present? && user.authenticate(params[:password])
-      session[:user_id] = user.id
+    user = User.find_by_email(user_params[:email])
+    if user.present? && user.authenticate(user_params[:password])
       render json: {
         message: "You've logged in successfully",
-        token: "token here"
+        token: user.api_key
       }, status: :ok
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render json: {messages: ["Invalid Email or Password"]}, status: :unauthorized
     end
+  end
+
+  private
+  # Only allow a trusted parameter "white list" through.
+  def user_params
+      # params.require(:user).permit(
+      params.permit(
+          :email,
+          :password
+      )
   end
   
   # logout not needed in BE for SecureRandom.hex approach
