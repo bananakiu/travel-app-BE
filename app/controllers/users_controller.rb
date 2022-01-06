@@ -6,10 +6,12 @@ class UsersController < ApplicationController
     def create
         @user = User.new(params[:user])
         if @user.save
-            session[:user_id] = @user.id
+            # session[:user_id] = @user.id
             render json: @user, status: :created
         else
-            render json: @user.errors, status: :unprocessable_entity
+            render json: @user.errors, status: :unprocessable_entity #@user.errors is active record errors
+            # username taken
+            # email taken
         end
     end
 end

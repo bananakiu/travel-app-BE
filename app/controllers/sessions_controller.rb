@@ -8,8 +8,9 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       # redirect_to root_url, notice: "Logged in!"
       render json: {
-        message: "You've logged in successfully"
-      }, status: :unprocessable_entity #! not sure what to render here
+        message: "You've logged in successfully",
+        token: "token here"
+      }, status: :ok #! not sure what to render here
     else
       # flash.now.alert = "Email or password is invalid"
       # render "new"
@@ -17,11 +18,12 @@ class SessionsController < ApplicationController
     end
   end
   
-  def destroy
-    session[:user_id] = nil
-    # redirect_to root_url, notice: "Logged out!"
-    render json: {
-      message: "You've logged out successfully!"
-    }, status: :ok #! not sure if this is correct
-  end
+  # logout not needed in BE for SecureRandom.hex approach
+  # def destroy
+  #   session[:user_id] = nil
+  #   # redirect_to root_url, notice: "Logged out!"
+  #   render json: {
+  #     message: "You've logged out successfully!"
+  #   }, status: :ok
+  # end
 end

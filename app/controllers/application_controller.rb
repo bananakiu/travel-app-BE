@@ -13,5 +13,7 @@ class ApplicationController < ActionController::API
     def authorize
         # redirect_to login_url, alert: "Not authorized" if current_user.nil?
         #! not sure what to render for API here that'd have the same effect as a redirect
+        # check header for API key (the random hex)
+        # check current user
     end
 end
