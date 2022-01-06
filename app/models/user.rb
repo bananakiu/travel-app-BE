@@ -12,7 +12,9 @@ class User < ApplicationRecord
     validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: 'Invalid email' }
     validates :password, presence: true, length: { minimum: 6 }
     validates :password_confirmation, presence: true
-    validates_uniqueness_of :username
+    validates :first_name, presence: true
+    validates :last_name, presence: true
+    validates :username, presence: true, uniqueness: true
 end
 
 # dummy users
