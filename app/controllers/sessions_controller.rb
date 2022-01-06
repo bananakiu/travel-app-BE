@@ -4,17 +4,14 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by_email(params[:email])
-    if user && user.authenticate(params[:password])
+    if user.present? && user.authenticate(params[:password])
       session[:user_id] = user.id
-      # redirect_to root_url, notice: "Logged in!"
       render json: {
         message: "You've logged in successfully",
         token: "token here"
-      }, status: :ok #! not sure what to render here
+      }, status: :ok
     else
-      # flash.now.alert = "Email or password is invalid"
-      # render "new"
-      render json: @user.errors, status: :unprocessable_entity #! not sure what to render here
+      render json: @user.errors, status: :unprocessable_entity
     end
   end
   
