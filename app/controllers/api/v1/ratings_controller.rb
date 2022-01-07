@@ -1,5 +1,7 @@
 class Api::V1::RatingsController < ApplicationController
     before_action :set_rating, only: [:show, :edit, :update, :destroy]
+    # before_filter :authorize, only: [:edit, :update]
+    
     def index
         @ratings = Rating.all
         render json: @ratings
