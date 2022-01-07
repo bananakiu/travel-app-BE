@@ -4,15 +4,14 @@ class ApplicationController < ActionController::API
 
     private
 
-    def current_user
-        @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    end
+    # def current_user
+    #     @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    # end
     
     # helper_method :current_user
 
     def authorize
-        # check header for API key (the random hex)
-        # check current user
-        User.find_by(api_key: request.body['API_KEY']).id
+        # WIP
+        User.find_by(api_key: @api_key).id
     end
 end
