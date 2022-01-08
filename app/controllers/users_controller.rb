@@ -10,7 +10,7 @@ class UsersController < ApplicationController
                 token: @user.api_key
             }, status: :ok, status: :created
         else
-            render json: @user.errors.full_messages, status: :unprocessable_entity #@user.errors is active record errors
+            render json: { messages: @user.errors.full_messages }, status: :unprocessable_entity #@user.errors is active record errors
         end
     end
 
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
                 message: "You've edited your profile successfully",
             }, status: :ok
         else
-            render json: @user.errors.full_messages, status: :unprocessable_entity
+            render json: { messages: @user.errors.full_messages }, status: :unprocessable_entity
         end
     end
 
