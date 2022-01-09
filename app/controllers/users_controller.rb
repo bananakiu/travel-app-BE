@@ -1,5 +1,19 @@
 class UsersController < ApplicationController
     before_action :set_user, only: [:update, :destroy]
+    def index
+        @users = User.select(
+            "id",
+            "email",
+            "created_at", 
+            "updated_at",
+            "username",
+            "first_name",
+            "last_name",
+            "bio",
+            "profile_picture"
+        ).all
+        render json: @users
+    end
 
     def create
         @user = User.new(user_params)
