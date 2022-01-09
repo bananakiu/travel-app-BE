@@ -48,7 +48,7 @@ class Api::V1::RollsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def roll_params
-    params.require(:roll).permit(:title, :start_date, :end_date, :user_id)
+    params.require(:roll).permit(:title, :start_date, :end_date, :user_id, :image)
   end
 
 end
