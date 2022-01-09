@@ -17,18 +17,24 @@ class Api::V1::RollsController < ApplicationController
     @roll = Roll.new(roll_params)
 
     if @roll.save
-      render json: @roll, status: :created, location: @roll
-    else
-      render json: @roll.errors, status: :unprocessable_entity
+      render json: {
+          roll: @roll,
+          message: "You've made a roll successfully",
+      }, status: :ok, status: :created
+  else
+      render json: { messages: @roll.errors }, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /rolls/1
   def update
     if @roll.update(roll_params)
-      render json: @roll
-    else
-      render json: @roll.errors, status: :unprocessable_entity
+      render json: {
+          roll: @roll,
+          message: "You've updated a roll successfully",
+      }, status: :ok
+  else
+      render json: { messages: @roll.errors }, status: :unprocessable_entity
     end
   end
 
@@ -45,7 +51,7 @@ class Api::V1::RollsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def roll_params
-    params.require(:roll).permit(:title, :start_date, :end_date, :user_id)
+    params.require(:roll).permit(:title, :start_date, :end_date, :user_id, :image)
   end
 
 end
