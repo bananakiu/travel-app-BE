@@ -22,16 +22,19 @@ class Api::V1::RollsController < ApplicationController
           message: "You've made a roll successfully",
       }, status: :ok, status: :created
   else
-      render json: { messages: @roll.errors.full_messages }, status: :unprocessable_entity
+      render json: { messages: @roll.errors }, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /rolls/1
   def update
     if @roll.update(roll_params)
-      render json: @roll
-    else
-      render json: @roll.errors, status: :unprocessable_entity
+      render json: {
+          roll: @roll,
+          message: "You've updated a roll successfully",
+      }, status: :ok
+  else
+      render json: { messages: @roll.errors }, status: :unprocessable_entity
     end
   end
 
