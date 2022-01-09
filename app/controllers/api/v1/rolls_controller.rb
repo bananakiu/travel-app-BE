@@ -17,9 +17,12 @@ class Api::V1::RollsController < ApplicationController
     @roll = Roll.new(roll_params)
 
     if @roll.save
-      render json: @roll, status: :created, location: @roll
-    else
-      render json: @roll.errors, status: :unprocessable_entity
+      render json: {
+          roll: @roll,
+          message: "You've made a roll successfully",
+      }, status: :ok, status: :created
+  else
+      render json: { messages: @roll.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
