@@ -49,10 +49,10 @@ class Api::V1::EntriesController < ApplicationController
   end
 
   def entries_in_country
-    @entries = Entry.where(country: params[:country].titleize)
+    @entries = Entry.where(country: params[:country].titleize).where(public: true)
     render json: @entries
   end
-
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_entry
