@@ -17,18 +17,24 @@ class Api::V1::EntriesController < ApplicationController
     @entry = Entry.new(entry_params)
 
     if @entry.save
-      render json: @entry, status: :created, location: @entry
+      render json: {
+          entry: @entry,
+          message: "You've made a successful entry!",
+      }, status: :ok, status: :created
     else
-      render json: @entry.errors, status: :unprocessable_entity
+      render json: { messages: @entry.errors }, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /entries/1
   def update
     if @entry.update(entry_params)
-      render json: @entry
+      render json: {
+        entry: @entry,
+        message: "You've updated an entry successfully!",
+      }, status: :ok
     else
-      render json: @entry.errors, status: :unprocessable_entity
+      render json: { messages: @entry.errors }, status: :unprocessable_entity
     end
   end
 
