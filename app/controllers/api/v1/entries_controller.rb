@@ -61,7 +61,7 @@ class Api::V1::EntriesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def entry_params
-      params.require(:entry).permit(:title, :image, :date, :country, :city, :public, :category, :category_response, :description)
+      params.require(:entry).permit(:title, :image, :date, :country, :city, :public, :category, :category_response, :description, :roll_id)
     end
 
 end
