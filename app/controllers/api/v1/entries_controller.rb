@@ -43,6 +43,16 @@ class Api::V1::EntriesController < ApplicationController
     @entry.destroy
   end
 
+  def entries_in_roll
+    @entries = Entry.where(roll_id: params[:id])
+    render json: @entries
+  end
+
+  def entries_in_country
+    @entries = Entry.where(country: params[:country].titleize)
+    render json: @entries
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_entry

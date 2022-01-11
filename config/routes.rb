@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :rolls
       resources :entries
+      get '/entries/roll/:id', :to => 'entries#entries_in_roll', as: 'entries_in_roll'
+      get '/entries/country/:country', :to => 'entries#entries_in_country', as: 'entries_in_country'
       resources :ratings
     end
   end
