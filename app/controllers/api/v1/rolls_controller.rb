@@ -55,13 +55,7 @@ class Api::V1::RollsController < ApplicationController
   end
 
   def authorize
-    puts "hello 1"
-    puts params[:api_key]
-    puts params[:user_id]
-    puts User.find_by(id: @roll.user_id).api_key
-    puts "hello 2"
     if params[:api_key] != User.find_by(id: @roll.user_id).api_key
-      puts "hi"
       render json: { message: "You are not authorized to edit this roll." }, status: :unprocessable_entity
     end
   end
