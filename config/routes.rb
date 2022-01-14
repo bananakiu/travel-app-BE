@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       resources :entries
       get '/entries/roll/:id', :to => 'entries#entries_in_roll', as: 'entries_in_roll'
       get '/entries/country/:country', :to => 'entries#entries_in_country', as: 'entries_in_country'
+      get '/entries/user/:user_id', :to => 'entries#entries_in_user', as: 'entries_in_user'
       resources :ratings
     end
   end
