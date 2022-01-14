@@ -1,6 +1,6 @@
 class Api::V1::RollsController < ApplicationController
   before_action :set_roll, only: [:show, :edit, :update, :destroy]
-  # before_filter :authorize, only: [:edit, :update]
+  before_action :authorize, only: [:edit, :update, :destroy]
 
   def index
     @rolls = Roll.all
@@ -54,4 +54,9 @@ class Api::V1::RollsController < ApplicationController
     params.require(:roll).permit(:title, :start_date, :end_date, :user_id, :image)
   end
 
+  def authorize
+    if params[:api_key] != User.find_by(id: @roll.user_id).api_key
+      render json: { message: "You are not authorized to edit this roll." }, status: :unprocessable_entity
+    end
+  end
 end
