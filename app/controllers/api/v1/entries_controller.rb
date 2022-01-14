@@ -53,6 +53,11 @@ class Api::V1::EntriesController < ApplicationController
     render json: @entries
   end
 
+  def entries_in_country_user
+    @entries = Entry.where(country: params[:country].titleize).where(user_id: params[:user_id])
+    render json: @entries
+  end
+
   def entries_in_user
     @entries = Entry.where(user_id: params[:user_id])
     render json: @entries
