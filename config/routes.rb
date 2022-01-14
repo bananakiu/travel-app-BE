@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users, :except => [:show]
+  get '/users/:username', :to => 'users#show'
   resources :sessions
 
   get '/member-data', to: 'members#show'
