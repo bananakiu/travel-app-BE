@@ -60,7 +60,12 @@ class Api::V1::EntriesController < ApplicationController
 
   def entries_in_user
     @user_id = User.where(username: params[:username])[0].id
-    @entries = Entry.where(user_id: @user_id)
+    @rolls = Roll.where(user_id: @user_id)
+    rolls_arr = []
+    for i in @rolls do
+      rolls_arr.push(i.id)
+     end
+    @entries = Entry.where(roll_id: rolls_arr)
     render json: @entries
   end
   
