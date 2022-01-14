@@ -43,6 +43,11 @@ class Api::V1::RollsController < ApplicationController
     @roll.destroy
   end
 
+  def rolls_in_user
+    @rolls = Roll.where(user_id: params[:id])
+    render json: @rolls
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_roll
