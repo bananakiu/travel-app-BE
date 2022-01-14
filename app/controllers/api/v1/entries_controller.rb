@@ -48,6 +48,41 @@ class Api::V1::EntriesController < ApplicationController
     render json: @entries
   end
 
+  def entries_in_roll_food
+    @entries = Entry.where(roll_id: params[:id]).where(category: "Food")
+    render json: @entries
+  end
+
+  def entries_in_roll_attraction
+    @entries = Entry.where(roll_id: params[:id]).where(category: "Attraction")
+    render json: @entries
+  end
+
+  def entries_in_roll_person
+    @entries = Entry.where(roll_id: params[:id]).where(category: "Person")
+    render json: @entries
+  end
+
+  def entries_in_roll_fashion
+    @entries = Entry.where(roll_id: params[:id]).where(category: "Fashion")
+    render json: @entries
+  end
+
+  def entries_in_roll_accommodation
+    @entries = Entry.where(roll_id: params[:id]).where(category: "Accommodation")
+    render json: @entries
+  end
+
+  def entries_in_roll_transportation
+    @entries = Entry.where(roll_id: params[:id]).where(category: "Transportation")
+    render json: @entries
+  end
+
+  def entries_in_roll_other
+    @entries = Entry.where(roll_id: params[:id]).where(category: "Other")
+    render json: @entries
+  end
+
   def entries_in_country
     @entries = Entry.where(country: params[:country].titleize).where(public: true)
     render json: @entries
