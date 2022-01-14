@@ -59,7 +59,8 @@ class Api::V1::EntriesController < ApplicationController
   end
 
   def entries_in_user
-    @entries = Entry.where(user_id: params[:user_id])
+    @user_id = User.where(username: params[:username])[0].id
+    @entries = Entry.where(user_id: @user_id)
     render json: @entries
   end
   
