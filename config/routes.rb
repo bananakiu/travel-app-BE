@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :countries
   resources :users, :except => [:show]
   get '/users/:username', :to => 'users#show'
   resources :sessions
