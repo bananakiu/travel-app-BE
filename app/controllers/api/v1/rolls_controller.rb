@@ -45,7 +45,7 @@ class Api::V1::RollsController < ApplicationController
 
   def rolls_in_user
     @rolls = Roll.where(user_id: params[:id])
-    render json: @entries
+    render json: @rolls
   end
 
   private
