@@ -49,37 +49,37 @@ class Api::V1::EntriesController < ApplicationController
   end
 
   def entries_in_roll_food
-    @entries = Entry.where(roll_id: params[:id]).where(category: "Food").where.not(image: null)
+    @entries = Entry.where(roll_id: params[:id]).where(category: "food").where.not(image: null)
     render json: @entries
   end
 
   def entries_in_roll_attraction
-    @entries = Entry.where(roll_id: params[:id]).where(category: "Attraction").where.not(image: null)
+    @entries = Entry.where(roll_id: params[:id]).where(category: "attraction").where.not(image: null)
     render json: @entries
   end
 
   def entries_in_roll_person
-    @entries = Entry.where(roll_id: params[:id]).where(category: "Person").where.not(image: null)
+    @entries = Entry.where(roll_id: params[:id]).where(category: "person").where.not(image: null)
     render json: @entries
   end
 
   def entries_in_roll_fashion
-    @entries = Entry.where(roll_id: params[:id]).where(category: "Fashion").where.not(image: null)
+    @entries = Entry.where(roll_id: params[:id]).where(category: "fashion").where.not(image: null)
     render json: @entries
   end
 
   def entries_in_roll_accommodation
-    @entries = Entry.where(roll_id: params[:id]).where(category: "Accommodation").where.not(image: null)
+    @entries = Entry.where(roll_id: params[:id]).where(category: "accommodation").where.not(image: null)
     render json: @entries
   end
 
   def entries_in_roll_transportation
-    @entries = Entry.where(roll_id: params[:id]).where(category: "Transportation").where.not(image: null)
+    @entries = Entry.where(roll_id: params[:id]).where(category: "transportation").where.not(image: null)
     render json: @entries
   end
 
   def entries_in_roll_other
-    @entries = Entry.where(roll_id: params[:id]).where(category: "Other").where.not(image: null)
+    @entries = Entry.where(roll_id: params[:id]).where(category: "other").where.not(image: null)
     render json: @entries
   end
 
