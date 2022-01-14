@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       get '/entries/roll/:id/person', :to => 'entries#entries_in_roll_person', as: 'entries_in_roll_person'
       get '/entries/roll/:id/fashion', :to => 'entries#entries_in_roll_fashion', as: 'entries_in_roll_fashion'
       get '/entries/roll/:id/accommodation', :to => 'entries#entries_in_roll_accommodation', as: 'entries_in_roll_accommodation'
-      get '/entries/roll/:id/transporation', :to => 'entries#entries_in_roll_transportation', as: 'entries_in_roll_transportation'
+      get '/entries/roll/:id/transportation', :to => 'entries#entries_in_roll_transportation', as: 'entries_in_roll_transportation'
       get '/entries/roll/:id/other', :to => 'entries#entries_in_roll_other', as: 'entries_in_roll_other'
 
       get '/entries/country/:country', :to => 'entries#entries_in_country', as: 'entries_in_country'
