@@ -44,17 +44,17 @@ class Api::V1::EntriesController < ApplicationController
   end
 
   def entries_in_roll
-    @entries = Entry.where(roll_id: params[:id])
+    @entries = Entry.where(roll_id: params[:id]).order(date: :desc)
     render json: @entries
   end
 
   def entries_in_country
-    @entries = Entry.where(country: params[:country].titleize).where(public: true)
+    @entries = Entry.where(country: params[:country].titleize).where(public: true).order(date: :desc)
     render json: @entries
   end
 
   def entries_in_country_user
-    @entries = Entry.where(country: params[:country].titleize).where(user_id: params[:user_id])
+    @entries = Entry.where(country: params[:country].titleize).where(user_id: params[:user_id]).order(date: :desc)
     render json: @entries
   end
 
@@ -65,7 +65,7 @@ class Api::V1::EntriesController < ApplicationController
     for i in @rolls do
       rolls_arr.push(i.id)
      end
-    @entries = Entry.where(roll_id: rolls_arr)
+    @entries = Entry.where(roll_id: rolls_arr).order(date: :desc)
     render json: @entries
   end
   

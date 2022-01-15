@@ -44,7 +44,7 @@ class Api::V1::RollsController < ApplicationController
   end
 
   def rolls_in_user
-    @rolls = Roll.where(user_id: params[:id])
+    @rolls = Roll.where(user_id: params[:id]).order(date: :desc)
     render json: @rolls
   end
 
